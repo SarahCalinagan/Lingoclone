@@ -53,6 +53,24 @@ const main = async () => {
                 title: "Foods",
                 order: 1,
             },
+            {
+                id: 2,
+                unitId: 1,
+                title: "Numbers",
+                order: 2,
+            },
+            {
+                id: 3,
+                unitId: 1,
+                title: "Numbers",
+                order: 3,
+            },
+            {
+                id: 4,
+                unitId: 1,
+                title: "Foods",
+                order: 4,
+            },
             
         ]);
 
@@ -71,26 +89,26 @@ const main = async () => {
             {
                 id: 1,
                 challengId: 1,
-                imageSrc: "/man.svg",
+                imageSrc: "/water.svg",
                 correct: true,
                 text: "mizu",
-                audioSrc: "/es_man.mp3",
+                audioSrc: "/jp_water.mp3",
             },
             {
                 id: 2,
                 challengId: 1,
-                imageSrc: "/woman.svg",
+                imageSrc: "/soba.svg",
                 correct: false,
                 text: "soba",
-                audioSrc: "/es_woman.mp3",
+                audioSrc: "/jp_soba.mp3",
             },
             {
                 id: 3,
                 challengId: 1,
-                imageSrc: "/robot.svg",
+                imageSrc: "/sushi.svg",
                 correct: false,
                 text: "sushi",
-                audioSrc: "/es_robot.mp3",
+                audioSrc: "/jp_sushi.mp3",
             },
             
         ]);

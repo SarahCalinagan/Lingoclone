@@ -7,6 +7,7 @@ import {ClerkProvider,
   UserButton} from '@clerk/nextjs'
 import "./globals.css";
 import { Toaster } from "@/components/ui/sonner";
+import { ExitModal } from "@/components/modals/exit-modal";
 
 const font = Nunito({
   variable: "--font-geist-sans",
@@ -28,6 +29,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${font.variable} antialiased`}>
         <Toaster/>
+        <ExitModal />
         {children}
       </body>
     </html>
