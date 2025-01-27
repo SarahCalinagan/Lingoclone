@@ -29,7 +29,7 @@ export const UserProgress = ({
                 </Button>
             </Link>
             <Link href="/shop">
-                <Button variant="ghost" className="text-orange-500">
+                <Button variant="ghost" className="text-sky-500">
                     <Image src="/point.svg" height={28} width={28} alt="Points" className="mr-2"/>
                     {points}
                 </Button>

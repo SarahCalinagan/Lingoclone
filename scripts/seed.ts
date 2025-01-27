@@ -36,15 +36,26 @@ const main = async () => {
             },
         ]);
 
+//units
+
         await db.insert(schema.units).values([
             {
                 id: 1,
                 courseId: 2,
                 title: "Unit 1",
-                description: "Basics of Japanese",
+                description: "Basics of Japanese - Foods",
                 order: 1,
             },
+            {
+                id: 2,
+                courseId: 2,
+                title: "Unit 2",
+                description: "Basics of Japanese - Numbers",
+                order: 2,
+            },
         ]);
+
+//lessons per unit
 
         await db.insert(schema.lessons).values([
             {
@@ -56,13 +67,13 @@ const main = async () => {
             {
                 id: 2,
                 unitId: 1,
-                title: "Numbers",
+                title: "Foods",
                 order: 2,
             },
             {
                 id: 3,
                 unitId: 1,
-                title: "Numbers",
+                title: "Foods",
                 order: 3,
             },
             {
@@ -74,6 +85,36 @@ const main = async () => {
             
         ]);
 
+        await db.insert(schema.lessons).values([
+            {
+                id: 5,
+                unitId: 2,
+                title: "Numbers",
+                order: 1,
+            },
+            {
+                id: 6,
+                unitId: 2,
+                title: "Numbers",
+                order: 2,
+            },
+            {
+                id: 7,
+                unitId: 2,
+                title: "Numbers",
+                order: 3,
+            },
+            {
+                id: 8,
+                unitId: 2,
+                title: "Numbers",
+                order: 4,
+            },
+            
+        ]);
+
+//challenges per lesson
+
         await db.insert(schema.challenges).values([
             {
                 id: 1,
@@ -82,32 +123,176 @@ const main = async () => {
                 order: 1,
                 question: ' Select the Word "Water".',
             },
+            {
+                id: 2,
+                lessonId: 1,
+                type: "ASSIST",
+                order: 2,
+                question: '"Sushi"',
+            },
+            {
+                id:3,
+                lessonId: 2,
+                type: "SELECT",
+                order: 3,
+                question: ' Select the Word "Soba".',
+            },
+            {
+                id: 4,
+                lessonId: 2,
+                type: "ASSIST",
+                order: 4,
+                question: '"Its Sushi."',
+            },
+            
+        ]);
+
+        
+
+        await db.insert(schema.challenges).values([
+            {
+                id: 5,
+                lessonId: 3,
+                type: "SELECT",
+                order: 1,
+                question: ' Select the Word "Sushi".',
+            },
+            {
+                id: 6,
+                lessonId: 3,
+                type: "ASSIST",
+                order: 2,
+                question: '"Sushi"',
+            },
+            {
+                id: 7,
+                lessonId: 4,
+                type: "SELECT",
+                order: 3,
+                question: ' Select the Word "Soba".',
+            },
+            
+        ]);
+
+//challenge options
+//lesson 1 unit 1
+
+        await db.insert(schema.challengeOptions).values([
+            {
+                challengId: 1,
+                imageSrc: "/water.svg",
+                correct: true,
+                text: "ミズ",
+                audioSrc: "/jp_water.mp3",
+            },
+            {
+                challengId: 1,
+                imageSrc: "/soba.svg",
+                correct: false,
+                text: "ソバ",
+                audioSrc: "/jp_soba.mp3",
+            },
+            {
+                challengId: 1,
+                imageSrc: "/sushi.svg",
+                correct: false,
+                text: "すし",
+                audioSrc: "/jp_sushi.mp3",
+            },
             
         ]);
 
         await db.insert(schema.challengeOptions).values([
             {
-                id: 1,
-                challengId: 1,
-                imageSrc: "/water.svg",
-                correct: true,
-                text: "mizu",
+                challengId: 2,
+                correct: false,
+                text: "ミズ",
                 audioSrc: "/jp_water.mp3",
             },
             {
-                id: 2,
-                challengId: 1,
-                imageSrc: "/soba.svg",
+                challengId: 2,
                 correct: false,
-                text: "soba",
+                text: "ソバ",
                 audioSrc: "/jp_soba.mp3",
             },
             {
-                id: 3,
-                challengId: 1,
+                challengId: 2,
+                correct: true,
+                text: "すし",
+                audioSrc: "/jp_sushi.mp3",
+            },
+            
+        ]);
+
+        await db.insert(schema.challengeOptions).values([
+            {
+                challengId: 3,
+                imageSrc: "/water.svg",
+                correct: false,
+                text: "ミズ",
+                audioSrc: "/jp_water.mp3",
+            },
+            {
+                challengId: 3,
+                imageSrc: "/soba.svg",
+                correct: true,
+                text: "ソバ",
+                audioSrc: "/jp_soba.mp3",
+            },
+            {
+                challengId: 3,
                 imageSrc: "/sushi.svg",
                 correct: false,
-                text: "sushi",
+                text: "すし",
+                audioSrc: "/jp_sushi.mp3",
+            },
+            
+        ]);
+
+        await db.insert(schema.challengeOptions).values([
+            {
+                challengId: 4,
+                correct: false,
+                text: "ミズ です",
+                audioSrc: "/jp_itswater.mp3",
+            },
+            {
+                challengId: 4,
+                correct: false,
+                text: "ソバ です",
+                audioSrc: "/jp_itssoba.mp3",
+            },
+            {
+                challengId: 4,
+                correct: true,
+                text: "すし です",
+                audioSrc: "/jp_itssushi.mp3",
+            },
+            
+        ]);
+
+//lesson 2 unit 
+
+        await db.insert(schema.challengeOptions).values([
+            {
+                challengId: 5,
+                imageSrc: "/water.svg",
+                correct: false,
+                text: "ミズ",
+                audioSrc: "/jp_water.mp3",
+            },
+            {
+                challengId: 5,
+                imageSrc: "/soba.svg",
+                correct: false,
+                text: "ソバ",
+                audioSrc: "/jp_soba.mp3",
+            },
+            {
+                challengId: 5,
+                imageSrc: "/sushi.svg",
+                correct: true,
+                text: "すし",
                 audioSrc: "/jp_sushi.mp3",
             },
             

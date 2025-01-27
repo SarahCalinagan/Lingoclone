@@ -8,7 +8,7 @@ import { Unit } from "./unit";
 import { lessons, units as unitsSchema } from "@/db/schema";
 
 const LearnPage = async () => {
-    const userProgressdata = getUserProgress();
+    const userProgressData = getUserProgress();
     const courseProgressData = getCourseProgress();
     const lessonPercentageData = getLessonPercentage();
     const unitsData = getUnits();
@@ -19,7 +19,7 @@ const LearnPage = async () => {
         courseProgress,
         lessonPercentage
     ] = await Promise.all([
-        userProgressdata,
+        userProgressData,
         unitsData,
         courseProgressData,
         lessonPercentageData,
