@@ -26,7 +26,7 @@ export const List =  ({courses, activeCourseId}: Props) => {
 
         startTransition(() => {
             upsertUserProgress(id)
-            .catch(() => toast.error("Something went Wrong"));
+            .catch(() => toast.error("You entered another lagnuage"));
         });
     };
 
