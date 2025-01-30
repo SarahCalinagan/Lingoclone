@@ -1,4 +1,6 @@
 import { FeedWrapper } from "@/components/feadwrap";
+import { Promo } from "@/components/promo";
+import { Quests } from "@/components/quests";
 import { StickyWrapper } from "@/components/stickywrap";
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { Separator } from "@/components/ui/separator";
@@ -33,6 +35,11 @@ const LeaderboardPage = async () => {
                     points={userProgress.ponts}
                     hasActiveSub={isPro}
                 />
+                {!isPro && (
+                <Promo />
+                )}
+                <Quests points={userProgress.ponts}/>
+
             </StickyWrapper>
             <FeedWrapper>
                 <div className="w-full flex flex-col items-center">
