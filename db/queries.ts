@@ -19,8 +19,12 @@ export const getUserProgress = cache(async () => {
         },
     });
 
+    
+
     return data;
 });
+
+
 
 export const getUnits = cache(async () => {
     const {userId} = await auth();
@@ -229,6 +233,12 @@ export const getUserSubscription = cache(async () => {
 });
 
 export const getTopTenUsers = cache(async () => {
+    const {userId} = await auth();
+
+    if (!userId) {
+        return [];
+    }
+    
     const data = await db.query.userProgress.findMany({
         orderBy: (userProgress, {desc}) => [desc(userProgress.ponts)],
         limit: 10,
