@@ -1,12 +1,13 @@
 "use client";
 
 import { refillHearts } from "@/actions/user-progress";
+import { createStripeUrl } from "@/actions/usersub";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { useTransition } from "react";
 import { toast } from "sonner";
+import { POINT_REFILL } from "@/constants";
 
-const POINT_REFILL = 10;
 
 type Props = {
     hearts: number;
@@ -26,10 +27,37 @@ export const Items = ({
 
         startTansition(() => {
             refillHearts()
-            .catch(() => toast.error("Something went wron in shop"));
+            .catch(() => toast.error("Something went wrong in shop. sala ni dave"));
             
         });
     };
+
+    const onUpgrade = () => {
+        startTansition (() => {
+            createStripeUrl()
+            .then((response) => {
+                if (typeof response.data === 'string') {
+                    window.location.href = response.data;
+                } else {
+                    toast.error("Invalid response data. sala ni dave");
+                }
+            })
+            .catch(() => toast.error("Something went wrong"));
+        });
+    };
+    /*
+    old
+    const onUpgrade = () => {
+        startTansition (() => {
+            createStripeUrl()
+            .then((response) => {
+                if (response.data) {
+                    window.location.href = response.data;
+                }
+            })
+            .catch(() => toast.error("Something went wrong"));
+        });
+    };*/
     //wala lang
 
     return (
@@ -77,9 +105,10 @@ export const Items = ({
                     </p>
                 </div>
                 <Button
-                    disabled={pending || hasActiveSub}
+                onClick={onUpgrade}
+                    disabled={pending}
                 >
-                    {hasActiveSub ? "active" : "upgrade"}
+                    {hasActiveSub ? "settings" : "upgrade"}
                 </Button>
             </div>
         </ul>

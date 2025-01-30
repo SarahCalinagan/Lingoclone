@@ -3,6 +3,9 @@ import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server'
 const isProtectedRoute = createRouteMatcher(['/learn(.*)'])
 
 export default clerkMiddleware(async (auth, req) => {
+  if (req.nextUrl.pathname.startsWith("/api/webhooks/stripe")) {
+    return; // Skip Clerk authentication for this route
+  }
   if (isProtectedRoute(req)) await auth.protect()
 })
 
