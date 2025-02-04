@@ -1,12 +1,25 @@
-import { SimpleForm, Create, required, TextInput, ReferenceInput, NumberInput } from "react-admin";
+import { SimpleForm, Create, required, TextInput, ReferenceInput, NumberInput, SelectInput } from "react-admin";
 
 export const ChallengeCreate = () => {
     return (
         <Create>
             <SimpleForm>
-                <TextInput source="title" validate={[required()]} label="Title"/>
-                <TextInput source="description" validate={[required()]} label="Description"/>
-                <ReferenceInput source="courseId" reference="courses"/>
+                <TextInput source="question" validate={[required()]} label="Question"/>
+                <SelectInput 
+                source="type"
+                choices={[
+                    {
+                        id: "SELECT",
+                        name: "SELECT",
+                    },
+                    {
+                        id: "ASSIST",
+                        name: "ASSIST",
+                    }
+                ]}
+                validate={[required()]}
+                />
+                <ReferenceInput source="lessonId" reference="lessons"/>
                 <NumberInput source="order" validate={[required()]} label="Order"/>
             </SimpleForm>
         </Create>
